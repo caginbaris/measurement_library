@@ -6,22 +6,25 @@
 #include <stdint.h>
 
 
+typedef struct sos_parameters{
+	
+	double xz2;
+	double xz1;
+	double yz2;		
+	
+	
+}sos_parameters;
 
-typedef struct fof_coeffs{
+double filtering(double rtInput,  double *coeff, uint16_t coeffLength, double *zValues);
 
-	float b;
-	float a;
-
-}fof_coeffs;
-
-float filtering(float rtInput,float *coeff, uint16_t coeffLength, float *zValues);
-float lp_fo(float rtInput,float* xz,float yz,fof_coeffs coeff);
-float hp_fo(float rtInput,float* xz,float yz,fof_coeffs coeff);
+double fof_implementation(double rtInput,double* xz,double yz,  double *coeffs);
+double sos_implementation(double x ,double yBack,   double *coeffs, sos_parameters *back);
 
 //macros
 
-#define LP_FO(x,xz,y,coeffs)  y=lp_fo(x,&xz,y,coeffs)
-#define HP_FO(x,xz,y,coeffs)  y=hp_fo(x,&xz,y,coeffs)
+#define FOF(x,xz,y,coeffs)  		y=fof_implementation(x,&xz,y,coeffs)
+#define SOS(x,y,coeffs,params)  y=sos_implementation(x,y,coeffs,&params)
+
 
 #endif
 

@@ -7,10 +7,10 @@
 // delayLineCounter global counter for true rms calculation
 // length of delayLineArray - mult. inverse can be u
 
-float trueRMS(float rtInput, float *delayLineArray, uint16_t delayLineCounter, uint16_t arrayLength){
+double trueRMS(double rtInput, double *delayLineArray, uint16_t delayLineCounter, uint16_t arrayLength){
 
 	uint16_t i=0;
-	float rms = 0.0f, rms_sum = 0.0f, rms_data=0.0f;
+	double rms = 0.0, rms_sum = 0.0, rms_data=0.0;
 
 	*(delayLineArray+delayLineCounter) = rtInput;
 
@@ -22,7 +22,7 @@ float trueRMS(float rtInput, float *delayLineArray, uint16_t delayLineCounter, u
 		
 	}
 
-	rms = sqrtf(rms_sum / arrayLength);
+	rms = sqrt(rms_sum / arrayLength);
 
 	return rms;
 

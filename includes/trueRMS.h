@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-float trueRMS(float rtInput, float *delayLineArray, uint16_t delayLineCounter, uint16_t arrayLength);
+double trueRMS(double rtInput, double *delayLineArray, uint16_t delayLineCounter, uint16_t arrayLength);
 
 
 #endif
